@@ -1,4 +1,4 @@
-# Ot-project
+# Ot-project 🧶
 
 ## Exercises 🔥
 
