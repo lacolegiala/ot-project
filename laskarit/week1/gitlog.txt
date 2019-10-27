@@ -1,0 +1,131 @@
+commit 0a66299e44ab5d3c1214f155483a1a918ab42821
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 18:21:45 2019 +0200
+
+    Remove file1 and rename file2 to file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 3be0861319b2125aa5bad871fc056299ec430966
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 18:16:22 2019 +0200
+
+    Add a new directory and files
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 8d37b2c0ecd48d2120750d464c86a94b6b9a5c5a
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 18:06:32 2019 +0200
+
+    Add more aita stuff to eka and kolmas
+
+ eka.txt    |  6 ++++--
+ kolmas.txt | 13 ++++++++++++-
+ 2 files changed, 16 insertions(+), 3 deletions(-)
+
+commit a23db3b676ba8367c271326829482cf2f774a9e5
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 18:01:00 2019 +0200
+
+    Rename tiedosto to eka
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit a0f1a63ceb4e53b57ba2c1c9cf72d12361c55dd8
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 17:58:05 2019 +0200
+
+    Delete toinen.txt
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b7c778c4ac7702800e71e21cdfe931ad1ca84270
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 17:54:33 2019 +0200
+
+    Add toinen.txt back
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b921685c982250e90d019b36facb231911f1ae15
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 17:53:50 2019 +0200
+
+    Remove toinen.txt
+
+ toinen.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+commit c26666602ef45be23d9c24a1e2e50c0745b8b0e8
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 17:52:27 2019 +0200
+
+    Copy another AITA post to tiedosto.txt
+
+ tiedosto.txt | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+commit d9a667a7f4a35cc8fc40dd766f107a0a2dbcd946
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 17:48:25 2019 +0200
+
+    Add text to tiedosto.txt
+
+ tiedosto.txt | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+commit 5ba7648b619ac6a7d34e6ecac90574573e352d9a
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 17:38:22 2019 +0200
+
+    Add directory stuff
+
+ stuff/junk | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 23b2d30bd62faf68c2bcb82f91b9d58754b35815
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 17:36:55 2019 +0200
+
+    Modify toinen and kolmas
+
+ kolmas.txt | 2 ++
+ toinen.txt | 2 ++
+ 2 files changed, 4 insertions(+)
+
+commit b5264cd5e0184bc42745290e2d0b021d89ec6c69
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 17:35:05 2019 +0200
+
+    Add file kolmas
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit cdd587b95acfcf9015556b207eefb2253ba61a9e
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 17:31:34 2019 +0200
+
+    Add toinen and modify tiedosto
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 5b8ca082c717cbd89b9fa9ff4000ce5ebd6bbb75
+Author: Sofia Riekkola <sofia.riekkola@gmail.com>
+Date:   Sun Oct 27 17:21:09 2019 +0200
+
+    Create file tiedosto.txt
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
