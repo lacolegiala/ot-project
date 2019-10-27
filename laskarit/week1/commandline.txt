@@ -1,3 +1,5 @@
+😎
+
 kurssit
 └── ot2019
     └── viikko1
@@ -18,3 +20,6 @@ kurssit
                             └── mycompany
                                 └── unicafe
                                     └── MaksukorttiTest.java
+                                    
+                                    
+                                    
