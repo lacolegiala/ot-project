@@ -3,7 +3,7 @@ package com.mycompany.unicafe;
 
 public class Kassapaate {
 
-    private int kassassaRahaa;
+    public int kassassaRahaa;
     private int edulliset;
     private int maukkaat;
 
