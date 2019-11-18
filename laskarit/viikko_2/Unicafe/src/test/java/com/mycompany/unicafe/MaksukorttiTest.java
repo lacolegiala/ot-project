@@ -32,16 +32,20 @@ public class MaksukorttiTest {
     }
     
     @Test
-    public void moneyChargeOk() {
+    public void moneyCharge() {
         kortti.otaRahaa(5);
         assertTrue(kortti.saldo()==5);
+    }
+    
+    @Test
+    public void notEnoughMoney() {
         kortti.otaRahaa(15);
-        kortti.lataaRahaa(1000);
-        assertTrue(kortti.saldo()==1005);
-        assertEquals("saldo: 10.5", kortti.toString());
-        kortti.otaRahaa(1000);
-        kortti.lataaRahaa(7000);
-        assertEquals(kortti.otaRahaa(9000), false);
-        assertEquals(kortti.otaRahaa(5000), true);
+        assertTrue(kortti.saldo()==10);
+    }
+    
+    @Test
+    public void returnBoolean() {
+        assertEquals(kortti.otaRahaa(5), true);
+        assertEquals(kortti.otaRahaa(15), false);
     }
 }

@@ -31,21 +31,31 @@ public class KassapaateTest {
     }
     
     @Test
-    public void cashPaymentOk() {
+    public void enoughCash() {
         pääte.syoEdullisesti(250);
         assertTrue(pääte.kassassaRahaa==100240);
         assertEquals(10, pääte.syoEdullisesti(250));
-        pääte.syoEdullisesti(230);
-        assertEquals(230, pääte.syoEdullisesti(230));
-        assertTrue(pääte.kassassaRahaa==100480);
-        assertEquals(2, pääte.edullisiaLounaitaMyyty());
         pääte.syoMaukkaasti(410);
         assertTrue(pääte.kassassaRahaa==100880);
         assertEquals(10, pääte.syoMaukkaasti(410));
+    }
+    
+    @Test
+    public void cashSoldLunchesGrow() {
+        pääte.syoEdullisesti(240);
+        pääte.syoMaukkaasti(400);
+        assertEquals(1, pääte.edullisiaLounaitaMyyty());
+        assertEquals(1, pääte.maukkaitaLounaitaMyyty());
+    }
+    
+    @Test
+    public void notEnoughCash() {
+        pääte.syoEdullisesti(230);
+        assertEquals(230, pääte.syoEdullisesti(230));
+        assertTrue(pääte.kassassaRahaa==100000);
         assertEquals(390, pääte.syoMaukkaasti(390));
         pääte.syoMaukkaasti(390);
-        assertTrue(pääte.kassassaRahaa==101280);
-        assertEquals(2, pääte.maukkaitaLounaitaMyyty());
+        assertTrue(pääte.kassassaRahaa==100000);
     }
     
     @Test
@@ -57,7 +67,7 @@ public class KassapaateTest {
     }
     
     @Test
-    public void cardChargeLunchSaleSum() {
+    public void cardSoldLunchesGrow() {
         pääte.syoEdullisesti(kortti);
         assertEquals(1, pääte.edullisiaLounaitaMyyty());
         pääte.syoMaukkaasti(kortti);
