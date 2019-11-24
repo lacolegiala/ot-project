@@ -33,4 +33,12 @@ public class Gameboard {
         }
     }
     
+    public int getRows() {
+        return board.length;
+    }
+    
+    public int getColumns() {
+        return board[0].length;
+    }
+    
 }
