@@ -15,9 +15,9 @@ import java.util.Collections;
  */
 public class Gameboard {
 
-    private Card[][] board;    
-
-    public Gameboard(int rows, int columns) {
+    private Card[][] board;  
+    
+    private ArrayList<Integer> createCardValues(int rows, int columns) {
         int cardCount = rows * columns;
         int pairCount = cardCount / 2;
         
@@ -31,11 +31,17 @@ public class Gameboard {
         
         Collections.shuffle(numberList);
         
+        return numberList;
+    }
+
+    public Gameboard(int rows, int columns) {
         
+        ArrayList<Integer> cardValues = createCardValues(rows, columns);
+ 
         this.board = new Card[rows][columns];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = new Card(numberList.remove(0));
+                board[i][j] = new Card(cardValues.remove(0));
             }
         }
        
