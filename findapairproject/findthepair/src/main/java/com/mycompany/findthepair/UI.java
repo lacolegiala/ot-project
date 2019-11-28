@@ -1,0 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.mycompany.findthepair;
+
+import static java.lang.Integer.parseInt;
+import java.util.Scanner;
+
+/**
+ *
+ * @author sofiariekkola
+ */
+public class UI {
+    
+    public void start() {
+        Gameboard gameboard = new Gameboard(3, 4);
+        gameboard.render();
+        
+        System.out.println("Choose a card by giving coordinates. For example, '0,2'");
+        Scanner scanner1 = new Scanner(System.in);                 
+        String input1 = scanner1.nextLine();
+        String[] splitInput1 = input1.split(",");
+        
+        System.out.println("Thank you. Please choose another card");
+        Scanner scanner2 = new Scanner(System.in);                 
+        String input2 = scanner2.nextLine();
+        String[] splitInput2 = input2.split(",");
+        
+        int row1 = parseInt(splitInput1[0]);
+        int column1 = parseInt(splitInput1[1]);
+        int row2 = parseInt(splitInput2[0]);
+        int column2 = parseInt(splitInput2[1]);  
+        
+        System.out.println(gameboard.match(row1, column1, row2, column2));
+        
+    }
+    
+}

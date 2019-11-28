@@ -16,6 +16,7 @@ import java.util.Collections;
 public class Gameboard {
 
     private Card[][] board;  
+
     
     private ArrayList<Integer> createCardValues(int rows, int columns) {
         int cardCount = rows * columns;
@@ -45,6 +46,10 @@ public class Gameboard {
             }
         }
        
+    }
+    
+    public boolean match(int row1, int column1, int row2, int column2) {
+        return this.board[row1][column1].getValue() == this.board[row2][column2].getValue();
     }
     
     public void render() {
