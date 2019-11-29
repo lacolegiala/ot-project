@@ -52,10 +52,19 @@ public class Gameboard {
         return this.board[row1][column1].getValue() == this.board[row2][column2].getValue();
     }
     
+    public void showCard(int row, int column) {
+        board[row][column].isShown = true;
+    }
+    
     public void render() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                System.out.print(board[i][j].getValue() + "\t");
+                if (board[i][j].isShown == true) {
+                    System.out.print(board[i][j].getValue() + "\t");
+                }
+                else {
+                    System.out.print("x");
+                }
             }
             System.out.println("\n");
         }

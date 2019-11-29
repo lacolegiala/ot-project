@@ -23,18 +23,23 @@ public class UI {
         String input1 = scanner1.nextLine();
         String[] splitInput1 = input1.split(",");
         
+        int row1 = parseInt(splitInput1[0]);
+        int column1 = parseInt(splitInput1[1]);
+        gameboard.showCard(row1, column1);
+        gameboard.render();
+        
         System.out.println("Thank you. Please choose another card");
         Scanner scanner2 = new Scanner(System.in);                 
         String input2 = scanner2.nextLine();
         String[] splitInput2 = input2.split(",");
         
-        int row1 = parseInt(splitInput1[0]);
-        int column1 = parseInt(splitInput1[1]);
         int row2 = parseInt(splitInput2[0]);
-        int column2 = parseInt(splitInput2[1]);  
+        int column2 = parseInt(splitInput2[1]); 
+        gameboard.showCard(row2, column2);
+        gameboard.render();
         
         System.out.println(gameboard.match(row1, column1, row2, column2));
-        
+            
     }
     
 }

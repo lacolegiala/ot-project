@@ -12,6 +12,7 @@ package com.mycompany.findthepair;
 public class Card {
     
     private int value;
+    boolean isShown;
     
     public Card(int value) {
         this.value = value;
