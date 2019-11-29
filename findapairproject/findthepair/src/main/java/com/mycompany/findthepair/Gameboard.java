@@ -63,7 +63,7 @@ public class Gameboard {
                     System.out.print(board[i][j].getValue() + "\t");
                 }
                 else {
-                    System.out.print("x");
+                    System.out.print("x" + "\t");
                 }
             }
             System.out.println("\n");
