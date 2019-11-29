@@ -68,7 +68,10 @@ public class Gameboard {
     public void render() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j].isShown == true) {
+                if (board[i][j] == null) {
+                    System.out.print("" + "\t");
+                }
+                else if (board[i][j].isShown == true) {
                     System.out.print(board[i][j].getValue() + "\t");
                 }
                 else {
