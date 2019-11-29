@@ -56,6 +56,15 @@ public class Gameboard {
         board[row][column].isShown = true;
     }
     
+    public void hideCard(int row, int column) {
+        board[row][column].isShown = false;
+    }
+    
+    public void removeCards(int row1, int column1, int row2, int column2) {
+        board[row1][column1] = null;
+        board[row2][column2] = null;
+    }
+    
     public void render() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {

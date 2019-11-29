@@ -39,6 +39,15 @@ public class UI {
         gameboard.render();
         
         System.out.println(gameboard.match(row1, column1, row2, column2));
+        
+        if (gameboard.match(row1, column1, row2, column2) == true) {
+            gameboard.removeCards(row1, column1, row2, column2);
+        }
+        else {
+            gameboard.hideCard(row1, column1);
+            gameboard.hideCard(row2, column2);
+        }
+        gameboard.render();
             
     }
     
