@@ -19,7 +19,7 @@ public class UI {
         gameboard.render();
         
        
-        while (true) {
+        while (gameboard.boardHasCards() == true) {
         
             System.out.println("Choose a card by giving coordinates. For example, '0,2'");
             Scanner scanner1 = new Scanner(System.in);                 
@@ -51,7 +51,6 @@ public class UI {
                 gameboard.hideCard(row2, column2);
             }
             gameboard.render();
-
         }
     }    
     
