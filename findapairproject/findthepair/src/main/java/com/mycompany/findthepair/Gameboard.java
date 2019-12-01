@@ -66,14 +66,13 @@ public class Gameboard {
     }
     
     public boolean boardHasCards() {
-        boolean cardsLeft = false;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) 
                 if (board[i][j] != null) {
-                    cardsLeft = true;
+                    return true;
                 }
         }
-        return cardsLeft;
+        return false;
     }
     
     public void render() {
