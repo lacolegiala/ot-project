@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class UI {
     
     public void start() {
-        Gameboard gameboard = new Gameboard(2, 2);
+        Gameboard gameboard = new Gameboard(3, 2);
         gameboard.render();
         
        
