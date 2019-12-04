@@ -16,7 +16,7 @@ import java.util.Collections;
 public class Gameboard {
 
     private Card[][] board;  
-
+   
     
     private ArrayList<Integer> createCardValues(int rows, int columns) {
         int cardCount = rows * columns;
@@ -99,5 +99,10 @@ public class Gameboard {
     public int getColumns() {
         return board[0].length;
     }
+    
+    public Card[][] getBoard() {
+        return this.board;
+    }
+
     
 }
