@@ -7,6 +7,11 @@ package com.mycompany.findthepair;
 
 import static java.lang.Integer.parseInt;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -16,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
@@ -54,22 +60,36 @@ public class UI extends Application {
                     gridPane.add(button, j+1, i+1);
                     button.setOnAction((event) -> {
                         this.gameboard.showCard(rowIndex, columnIndex);
+                        renderCards(gridPane, gameboard.getBoard());
+                        
+                        
                         if (this.firstCardRow != -1 && this.firstCardColumn != -1) {
-                            if (gameboard.match(firstCardRow, firstCardColumn, rowIndex, columnIndex) == true) {
-                                gameboard.removeCards(firstCardRow, firstCardColumn, rowIndex, columnIndex);
-                            }
-                            else {
-                                gameboard.hideCard(firstCardRow, firstCardColumn);
-                                gameboard.hideCard(rowIndex, columnIndex);
-                            }
-                            this.firstCardRow = -1;
-                            this.firstCardColumn = -1;
+                            
+                            Timeline timeline = new Timeline(new KeyFrame(
+                                Duration.millis(1500),
+                                ae -> {
+                                    if (gameboard.match(firstCardRow, firstCardColumn, rowIndex, columnIndex) == true) {
+                                        gameboard.removeCards(firstCardRow, firstCardColumn, rowIndex, columnIndex);
+                                    }
+                                    else {
+                                        gameboard.hideCard(firstCardRow, firstCardColumn);
+                                        gameboard.hideCard(rowIndex, columnIndex);
+                                    }
+                                    this.firstCardRow = -1;
+                                    this.firstCardColumn = -1;
+
+                                    renderCards(gridPane, gameboard.getBoard());
+                                }));
+                                    
+                            timeline.play();
+                        
+                                    
                         }
+                        
                         else {
                             this.firstCardRow = rowIndex;
                             this.firstCardColumn = columnIndex;
                         }
-                        renderCards(gridPane, gameboard.getBoard());
                     });
                 }
 
@@ -105,39 +125,6 @@ public class UI extends Application {
         stage.show();
         
        
-//        while (gameboard.boardHasCards() == true) {
-//        
-//            System.out.println("Choose a card by giving coordinates. For example, '0,2'");
-//            Scanner scanner1 = new Scanner(System.in);                 
-//            String input1 = scanner1.nextLine();
-//            String[] splitInput1 = input1.split(",");
-//
-//            int row1 = parseInt(splitInput1[0]);
-//            int column1 = parseInt(splitInput1[1]);
-//            gameboard.showCard(row1, column1);
-//            gameboard.render();
-//
-//            System.out.println("Thank you. Please choose another card");
-//            Scanner scanner2 = new Scanner(System.in);                 
-//            String input2 = scanner2.nextLine();
-//            String[] splitInput2 = input2.split(",");
-//
-//            int row2 = parseInt(splitInput2[0]);
-//            int column2 = parseInt(splitInput2[1]); 
-//            gameboard.showCard(row2, column2);
-//            gameboard.render();
-//
-//            System.out.println(gameboard.match(row1, column1, row2, column2));
-//
-//            if (gameboard.match(row1, column1, row2, column2) == true) {
-//                gameboard.removeCards(row1, column1, row2, column2);
-//            }
-//            else {
-//                gameboard.hideCard(row1, column1);
-//                gameboard.hideCard(row2, column2);
-//            }
-//            gameboard.render();
-//        }
     }    
     
 }
