@@ -29,6 +29,9 @@ public class UI extends Application {
         launch(UI.class);
     }
     
+    private int firstCardRow = -1;
+    private int firstCardColumn = -1;
+    
     private void renderCards(GridPane gridPane, Card[][] cardBoard) {
         gridPane.getChildren().clear();
         
@@ -51,6 +54,21 @@ public class UI extends Application {
                     gridPane.add(button, j+1, i+1);
                     button.setOnAction((event) -> {
                         this.gameboard.showCard(rowIndex, columnIndex);
+                        if (this.firstCardRow != -1 && this.firstCardColumn != -1) {
+                            if (gameboard.match(firstCardRow, firstCardColumn, rowIndex, columnIndex) == true) {
+                                gameboard.removeCards(firstCardRow, firstCardColumn, rowIndex, columnIndex);
+                            }
+                            else {
+                                gameboard.hideCard(firstCardRow, firstCardColumn);
+                                gameboard.hideCard(rowIndex, columnIndex);
+                            }
+                            this.firstCardRow = -1;
+                            this.firstCardColumn = -1;
+                        }
+                        else {
+                            this.firstCardRow = rowIndex;
+                            this.firstCardColumn = columnIndex;
+                        }
                         renderCards(gridPane, gameboard.getBoard());
                     });
                 }
@@ -72,7 +90,6 @@ public class UI extends Application {
         Card[][] cardBoard = gameboard.getBoard();
         
         GridPane gridPane = new GridPane();
-        
         
         Label label = new Label("Select your card");
 
