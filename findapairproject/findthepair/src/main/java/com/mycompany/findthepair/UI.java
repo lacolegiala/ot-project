@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
@@ -38,8 +39,11 @@ public class UI extends Application {
     private int firstCardRow = -1;
     private int firstCardColumn = -1;
     
+    private Timeline timeline;
+    
     private void renderCards(GridPane gridPane, Card[][] cardBoard) {
         gridPane.getChildren().clear();
+        
         
         for (int i = 0; i < cardBoard.length; i++) {
             for (int j = 0; j < cardBoard[i].length; j++) {
@@ -59,13 +63,16 @@ public class UI extends Application {
                     button.setText("x");
                     gridPane.add(button, j+1, i+1);
                     button.setOnAction((event) -> {
+                        if (timeline != null && timeline.getStatus() == Animation.Status.RUNNING) {
+                            return;
+                        }
                         this.gameboard.showCard(rowIndex, columnIndex);
                         renderCards(gridPane, gameboard.getBoard());
                         
                         
                         if (this.firstCardRow != -1 && this.firstCardColumn != -1) {
                             
-                            Timeline timeline = new Timeline(new KeyFrame(
+                            timeline = new Timeline(new KeyFrame(
                                 Duration.millis(1500),
                                 ae -> {
                                     if (gameboard.match(firstCardRow, firstCardColumn, rowIndex, columnIndex) == true) {
@@ -82,7 +89,7 @@ public class UI extends Application {
                                 }));
                                     
                             timeline.play();
-                        
+                            
                                     
                         }
                         
