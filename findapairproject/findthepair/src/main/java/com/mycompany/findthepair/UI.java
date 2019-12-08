@@ -77,6 +77,9 @@ public class UI extends Application {
                                 ae -> {
                                     if (gameboard.match(firstCardRow, firstCardColumn, rowIndex, columnIndex) == true) {
                                         gameboard.removeCards(firstCardRow, firstCardColumn, rowIndex, columnIndex);
+                                        if (gameboard.boardHasCards() == false) {
+                                            System.exit(0);
+                                        }
                                     }
                                     else {
                                         gameboard.hideCard(firstCardRow, firstCardColumn);
@@ -90,14 +93,16 @@ public class UI extends Application {
                                     
                             timeline.play();
                             
-                                    
+                            
                         }
                         
                         else {
                             this.firstCardRow = rowIndex;
                             this.firstCardColumn = columnIndex;
                         }
+                        
                     });
+                    
                 }
 
             }
@@ -112,7 +117,7 @@ public class UI extends Application {
         
         stage.setTitle("Find the pair");
         
-        this.gameboard = new Gameboard(6, 6);
+        this.gameboard = new Gameboard(2, 3);
 
         Card[][] cardBoard = gameboard.getBoard();
         
