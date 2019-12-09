@@ -27,10 +27,12 @@ import javafx.util.Duration;
 /**
  *
  * @author sofiariekkola
- */
+ */ 
 public class UI extends Application {
     
     private Gameboard gameboard;
+    
+    private int points;
     
     public static void startUI() {
         launch(UI.class);
@@ -40,9 +42,12 @@ public class UI extends Application {
     private int firstCardColumn = -1;
     
     private Timeline timeline;
+    private Timeline timeline2;
     
-    private void renderCards(GridPane gridPane, Card[][] cardBoard) {
+    private void renderCards(GridPane gridPane, Card[][] cardBoard, Label label) {
         gridPane.getChildren().clear();
+        label.setText("Your points: " + this.points);
+        
         
         
         for (int i = 0; i < cardBoard.length; i++) {
@@ -67,28 +72,38 @@ public class UI extends Application {
                             return;
                         }
                         this.gameboard.showCard(rowIndex, columnIndex);
-                        renderCards(gridPane, gameboard.getBoard());
+                        renderCards(gridPane, gameboard.getBoard(), label);
                         
                         
                         if (this.firstCardRow != -1 && this.firstCardColumn != -1) {
                             
                             timeline = new Timeline(new KeyFrame(
                                 Duration.millis(1500),
-                                ae -> {
+                                show -> {
                                     if (gameboard.match(firstCardRow, firstCardColumn, rowIndex, columnIndex) == true) {
+                                        points = points + 5;
+                                        System.out.println(points);
                                         gameboard.removeCards(firstCardRow, firstCardColumn, rowIndex, columnIndex);
                                         if (gameboard.boardHasCards() == false) {
-                                            System.exit(0);
+                                            timeline2 = new Timeline(new KeyFrame(
+                                                Duration.millis(1500),
+                                                exit -> {    
+                                                System.exit(0);
+                                                }
+                                            ));
+                                            timeline2.play();
                                         }
                                     }
                                     else {
+                                        points = points - 1;
+                                        System.out.println(points);
                                         gameboard.hideCard(firstCardRow, firstCardColumn);
                                         gameboard.hideCard(rowIndex, columnIndex);
                                     }
                                     this.firstCardRow = -1;
                                     this.firstCardColumn = -1;
 
-                                    renderCards(gridPane, gameboard.getBoard());
+                                    renderCards(gridPane, gameboard.getBoard(), label);
                                 }));
                                     
                             timeline.play();
@@ -124,11 +139,15 @@ public class UI extends Application {
         GridPane gridPane = new GridPane();
         
         Label label = new Label("Select your card");
+        
+        Label pointLabel = new Label("Your points: " + this.points);
 
-        renderCards(gridPane, cardBoard);
+        renderCards(gridPane, cardBoard, pointLabel);
+        
         
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(label);
+        borderPane.setBottom(pointLabel);
         borderPane.setLeft(gridPane);
         
         Scene scene = new Scene(borderPane);
