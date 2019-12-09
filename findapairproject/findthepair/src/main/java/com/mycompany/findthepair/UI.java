@@ -41,7 +41,7 @@ public class UI extends Application {
     private int firstCardRow = -1;
     private int firstCardColumn = -1;
     
-    private Timeline timeline;
+    private Timeline timeline1;
     private Timeline timeline2;
     
     private void renderCards(GridPane gridPane, Card[][] cardBoard, Label label) {
@@ -68,7 +68,7 @@ public class UI extends Application {
                     button.setText("x");
                     gridPane.add(button, j+1, i+1);
                     button.setOnAction((event) -> {
-                        if (timeline != null && timeline.getStatus() == Animation.Status.RUNNING) {
+                        if (timeline1 != null && timeline1.getStatus() == Animation.Status.RUNNING) {
                             return;
                         }
                         this.gameboard.showCard(rowIndex, columnIndex);
@@ -77,12 +77,11 @@ public class UI extends Application {
                         
                         if (this.firstCardRow != -1 && this.firstCardColumn != -1) {
                             
-                            timeline = new Timeline(new KeyFrame(
+                            timeline1 = new Timeline(new KeyFrame(
                                 Duration.millis(1500),
                                 show -> {
                                     if (gameboard.match(firstCardRow, firstCardColumn, rowIndex, columnIndex) == true) {
                                         points = points + 5;
-                                        System.out.println(points);
                                         gameboard.removeCards(firstCardRow, firstCardColumn, rowIndex, columnIndex);
                                         if (gameboard.boardHasCards() == false) {
                                             timeline2 = new Timeline(new KeyFrame(
@@ -96,7 +95,6 @@ public class UI extends Application {
                                     }
                                     else {
                                         points = points - 1;
-                                        System.out.println(points);
                                         gameboard.hideCard(firstCardRow, firstCardColumn);
                                         gameboard.hideCard(rowIndex, columnIndex);
                                     }
@@ -106,7 +104,7 @@ public class UI extends Application {
                                     renderCards(gridPane, gameboard.getBoard(), label);
                                 }));
                                     
-                            timeline.play();
+                            timeline1.play();
                             
                             
                         }
@@ -131,6 +129,8 @@ public class UI extends Application {
     public void start(Stage stage) {
         
         stage.setTitle("Find the pair");
+        
+        
         
         this.gameboard = new Gameboard(2, 3);
 
