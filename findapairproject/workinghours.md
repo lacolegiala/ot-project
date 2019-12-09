@@ -8,3 +8,5 @@
 | 29.11 | 3 | Refine logic
 | 30.11 | 3 | Recognize when the game is over
 | 1.12 | 0.5 | Fix a bug
+| 4.12 | 3 | Create basic JavaFX UI
+| 8.12 | 4 | Create the basic version of the game
