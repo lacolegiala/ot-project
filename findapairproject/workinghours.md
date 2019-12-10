@@ -10,3 +10,4 @@
 | 1.12 | 0.5 | Fix a bug
 | 4.12 | 3 | Create basic JavaFX UI
 | 8.12 | 4 | Create the basic version of the game
+| 9.12 | 3 | Create point system
