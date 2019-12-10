@@ -42,12 +42,10 @@ public class UI extends Application {
     private int firstCardColumn = -1;
     
     private Timeline timeline1;
-    private Timeline timeline2;
     
     private void renderCards(GridPane gridPane, Card[][] cardBoard, Label label) {
         gridPane.getChildren().clear();
         label.setText("Your points: " + this.points);
-        
         
         
         for (int i = 0; i < cardBoard.length; i++) {
@@ -84,6 +82,7 @@ public class UI extends Application {
                                         points = points + 5;
                                         gameboard.removeCards(firstCardRow, firstCardColumn, rowIndex, columnIndex);
                                         if (gameboard.boardHasCards() == false) {
+                                            Timeline timeline2;
                                             timeline2 = new Timeline(new KeyFrame(
                                                 Duration.millis(1500),
                                                 exit -> {    
@@ -105,7 +104,6 @@ public class UI extends Application {
                                 }));
                                     
                             timeline1.play();
-                            
                             
                         }
                         
@@ -130,8 +128,6 @@ public class UI extends Application {
         
         stage.setTitle("Find the pair");
         
-        
-        
         this.gameboard = new Gameboard(2, 3);
 
         Card[][] cardBoard = gameboard.getBoard();
@@ -140,10 +136,9 @@ public class UI extends Application {
         
         Label label = new Label("Select your card");
         
-        Label pointLabel = new Label("Your points: " + this.points);
+        Label pointLabel = new Label();
 
         renderCards(gridPane, cardBoard, pointLabel);
-        
         
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(label);
@@ -154,7 +149,6 @@ public class UI extends Application {
         
         stage.setScene(scene);
         stage.show();
-        
        
     }    
     
