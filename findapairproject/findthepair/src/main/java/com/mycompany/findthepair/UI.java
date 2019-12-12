@@ -15,12 +15,18 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -47,7 +53,6 @@ public class UI extends Application {
         gridPane.getChildren().clear();
         label.setText("Your points: " + this.points);
         
-        
         for (int i = 0; i < cardBoard.length; i++) {
             for (int j = 0; j < cardBoard[i].length; j++) {
                 Button button = new Button();
@@ -71,7 +76,6 @@ public class UI extends Application {
                         }
                         this.gameboard.showCard(rowIndex, columnIndex);
                         renderCards(gridPane, gameboard.getBoard(), label);
-                        
                         
                         if (this.firstCardRow != -1 && this.firstCardColumn != -1) {
                             
@@ -121,35 +125,57 @@ public class UI extends Application {
         
     }
     
-    
-    
     @Override
     public void start(Stage stage) {
         
         stage.setTitle("Find the pair");
         
-        this.gameboard = new Gameboard(2, 3);
-
-        Card[][] cardBoard = gameboard.getBoard();
+        BorderPane borderPane = new BorderPane();
+        
+        Scene scene = new Scene(borderPane);
         
         GridPane gridPane = new GridPane();
         
         Label label = new Label("Select your card");
         
         Label pointLabel = new Label();
-
-        renderCards(gridPane, cardBoard, pointLabel);
         
-        BorderPane borderPane = new BorderPane();
+        ObservableList<String> options = 
+            FXCollections.observableArrayList(
+            "Easy",
+            "Medium",
+            "Hard"
+            );
+        
+        final ComboBox<String> comboBox = new ComboBox(options);
+        
         borderPane.setRight(label);
         borderPane.setBottom(pointLabel);
+        borderPane.setTop(comboBox);
         borderPane.setLeft(gridPane);
         
-        Scene scene = new Scene(borderPane);
+        comboBox.setOnAction((ActionEvent event) -> {
+            String selection = comboBox.getSelectionModel().getSelectedItem();
+            switch (selection) {
+                case "Easy":
+                    gameboard = new Gameboard(2, 3);
+                    break;
+                case "Medium":
+                    gameboard = new Gameboard(4, 5);
+                    break;
+                default:
+                    gameboard = new Gameboard(6, 7);
+                    break;
+            }
+            Card[][] cardBoard = gameboard.getBoard();
+            renderCards(gridPane, cardBoard, pointLabel);
+        });
         
         stage.setScene(scene);
+        stage.setHeight(425);
+        stage.setWidth(425);
         stage.show();
-       
+        
     }    
     
 }

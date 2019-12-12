@@ -5,6 +5,7 @@
  */
 
 import com.mycompany.findthepair.Gameboard;
+import java.util.Collections;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,13 +23,19 @@ public class GameboardTest {
     
     @Before
     public void setUp() {
-        this.gameboard = new Gameboard(3, 5);
+        this.gameboard = new Gameboard(4, 5);
     }
     
     @Test
     public void gameboardCorrectSize() {
-        assertEquals(gameboard.getRows(), 3);
+        assertEquals(gameboard.getRows(), 4);
         assertEquals(gameboard.getColumns(), 5);
+    }
+    
+    @Test
+    public void emptyBoard() {
+        Gameboard gameboard = new Gameboard(0, 0);
+        assertEquals(gameboard.boardHasCards(), false);
     }
 
     // TODO add test methods here.
