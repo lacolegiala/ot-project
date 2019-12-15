@@ -5,9 +5,9 @@
  */
 package com.mycompany.findthepair;
 
-import static java.lang.Integer.parseInt;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.Animation;
@@ -18,17 +18,17 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  *
@@ -49,6 +49,8 @@ public class UI extends Application {
     
     private Timeline timeline1;
     
+    ArrayList<String> catImages = new ArrayList();
+    
     private void renderCards(GridPane gridPane, Card[][] cardBoard, Label label) {
         gridPane.getChildren().clear();
         label.setText("Your points: " + this.points);
@@ -56,13 +58,22 @@ public class UI extends Application {
         for (int i = 0; i < cardBoard.length; i++) {
             for (int j = 0; j < cardBoard[i].length; j++) {
                 Button button = new Button();
-                button.setStyle("-fx-pref-width: 50px; -fx-pref-height: 50px");
+                button.setStyle("-fx-pref-width: 100px; -fx-pref-height: 100px;");
                 if (cardBoard[i][j] == null) {
                     button.setText("");
                     gridPane.add(button, j+1, i+1);
                 }
                 else if (cardBoard[i][j].isShown == true) {
-                    button.setText(Integer.toString(cardBoard[i][j].getValue()));
+                    if (catImages.isEmpty()) {
+                        button.setText(Integer.toString(cardBoard[i][j].getValue()));
+                    } else {
+                        button.setStyle(""
+                            + "-fx-pref-width: 100px; "
+                            + "-fx-pref-height: 100px; "
+                            + "-fx-background-size: cover; "
+                            + "-fx-background-image: url('" + catImages.get(cardBoard[i][j].getValue() - 1) + "')");
+                    }
+                    
                     gridPane.add(button, j+1, i+1);
                 }
                 else {
@@ -167,15 +178,39 @@ public class UI extends Application {
                     gameboard = new Gameboard(6, 7);
                     break;
             }
+            try {
+                fetchCatImages(gameboard.getPairCount());
+            } catch (IOException ex) {
+                Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
             Card[][] cardBoard = gameboard.getBoard();
             renderCards(gridPane, cardBoard, pointLabel);
         });
         
         stage.setScene(scene);
-        stage.setHeight(425);
-        stage.setWidth(425);
+        stage.setWidth(800);
+        stage.setHeight(600);
         stage.show();
         
-    }    
+    }  
+    
+    private void fetchCatImages(int imageCount) throws IOException {
+        OkHttpClient client = new OkHttpClient();
+        
+        for (int i = 0; i < imageCount; i++) {
+            Request request = new Request.Builder()
+            .url("https://aws.random.cat/meow")
+            .build();
+
+            Response response = client.newCall(request).execute();
+            Gson gson = new Gson();
+            CatImage catImage = gson.fromJson(response.body().string(), CatImage.class);
+            catImages.add(catImage.getFile());
+            
+        }
+        
+    }
     
 }

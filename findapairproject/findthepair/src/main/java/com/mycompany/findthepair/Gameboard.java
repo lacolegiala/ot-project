@@ -100,6 +100,10 @@ public class Gameboard {
         return board[0].length;
     }
     
+    public int getPairCount() {
+        return (getRows() * getColumns()) / 2;
+    }
+    
     public Card[][] getBoard() {
         return this.board;
     }
