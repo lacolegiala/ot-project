@@ -14,3 +14,4 @@
 | 10.12 | 1 | Refactor code |
 | 12.12 | 3 | Make 3 different difficulty levels
 | 15.12| 4 | Add random cat images to the cards
+| 16.12 | 3 | Improve documentation and try to fix the problem with different Java versions
