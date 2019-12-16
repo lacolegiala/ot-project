@@ -12,8 +12,8 @@ The game is a classic memory game. There will be an even number of cards with pi
 - If the cards don't match, they will automatically shift back to the default picture ✅
 - If they match, they'll be removed from the table ✅
 - The player will earn 5 scores when the cards match; if not, they'll lose a score ✅
-- There are 3 levels of difficulty; the player will choose the level before the game begins (it will determine the size of the gameboard)
-- Pictures will be random by using a random picture API, for example RandomCat
+- There are 3 levels of difficulty; the player will choose the level before the game begins (it will determine the size of the gameboard) ✅
+- Pictures will be random by using a random picture API, for example RandomCat ✅
 
 
 ### [Link to the working hours](findapairproject/workinghours.md)

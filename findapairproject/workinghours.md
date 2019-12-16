@@ -11,3 +11,6 @@
 | 4.12 | 3 | Create basic JavaFX UI
 | 8.12 | 4 | Create the basic version of the game
 | 9.12 | 3 | Create point system
+| 10.12 | 1 | Refactor code |
+| 12.12 | 3 | Make 3 different difficulty levels
+| 15.12| 4 | Add random cat images to the cards
