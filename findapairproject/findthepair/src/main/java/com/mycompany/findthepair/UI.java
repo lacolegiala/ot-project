@@ -91,7 +91,7 @@ public class UI extends Application {
                         if (this.firstCardRow != -1 && this.firstCardColumn != -1) {
                             
                             timeline1 = new Timeline(new KeyFrame(
-                                Duration.millis(1500),
+                                Duration.millis(2000),
                                 show -> {
                                     if (gameboard.match(firstCardRow, firstCardColumn, rowIndex, columnIndex) == true) {
                                         points = points + 5;
