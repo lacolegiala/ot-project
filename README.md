@@ -13,8 +13,22 @@ The game is a classic memory game. There will be an even number of cards with pi
 - If they match, they'll be removed from the table ✅
 - The player will earn 5 scores when the cards match; if not, they'll lose a score ✅
 - There are 3 levels of difficulty; the player will choose the level before the game begins (it will determine the size of the gameboard) ✅
-- Pictures will be random by using a random picture API, for example RandomCat ✅
+- Pictures will be random by using a random picture API RandomCat ✅
+- Without internet connection, the game just uses numbers instead of cat pictures ✅
+
+## Documentation
+
+#### [Working hours](findapairproject/documentation/workinghours.md)
 
 
-### [Link to the working hours](findapairproject/workinghours.md)
+## Running the program
+
+```mvn compile exec:java -Dexec.mainClass=com.mycompany.findthepair.Main```
+
+### INFO
+
+The project has been made with Java 8. Newer Java versions don't support JavaFX, so any problems occurring when running the program may be linked to that.
+
+
+
 
