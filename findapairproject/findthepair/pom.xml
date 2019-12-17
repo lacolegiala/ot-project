@@ -48,8 +48,8 @@
                         </goals>
                     </execution>
                 </executions>
-              </plugin>
-              <plugin>
+            </plugin>
+            <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.3</version>
