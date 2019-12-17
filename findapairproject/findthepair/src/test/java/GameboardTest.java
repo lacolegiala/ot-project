@@ -5,11 +5,7 @@
  */
 
 import com.mycompany.findthepair.Gameboard;
-import java.util.Collections;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -37,7 +33,24 @@ public class GameboardTest {
         Gameboard gameboard = new Gameboard(0, 0);
         assertEquals(gameboard.boardHasCards(), false);
     }
-
+    
+    @Test
+    public void boardNotEmpty() {
+        assertEquals(gameboard.boardHasCards(), true);
+    }
+    
+    @Test
+    public void rightPairCount() {
+        assertEquals(gameboard.getPairCount(), 10);
+    }
+    
+    @Test
+    public void cardsRemoved() {
+        gameboard.removeCards(0, 0, 1, 0);
+        assertEquals(gameboard.getBoard()[0][0], null);
+        assertEquals(gameboard.getBoard()[1][0], null);
+    }
+    
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
