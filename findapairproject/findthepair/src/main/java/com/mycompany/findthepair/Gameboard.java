@@ -39,9 +39,9 @@ public class Gameboard {
         ArrayList<Integer> cardValues = createCardValues(rows, columns);
  
         this.board = new Card[rows][columns];
-        for (Card[] board1 : board) {
-            for (int j = 0; j < board1.length; j++) {
-                board1[j] = new Card(cardValues.remove(0));
+        for (Card[] row : board) {
+            for (int i = 0; i < row.length; i++) {
+                row[i] = new Card(cardValues.remove(0));
             }
         }
        
