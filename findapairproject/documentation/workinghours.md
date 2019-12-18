@@ -15,3 +15,5 @@
 | 12.12 | 3 | Make 3 different difficulty levels
 | 15.12| 4 | Add random cat images to the cards
 | 16.12 | 3 | Improve documentation and try to fix the problem with different Java versions
+| 17.12 | 3 | Add tests
+| 18.12| 2 | Create a database to save scores|

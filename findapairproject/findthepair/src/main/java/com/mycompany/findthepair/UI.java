@@ -36,7 +36,7 @@ import okhttp3.Response;
  */ 
 public class UI extends Application {
     
-    Database database;
+    private Database database;
     
     private Gameboard gameboard;
     
@@ -51,7 +51,7 @@ public class UI extends Application {
     
     private Timeline timeline1;
     
-    private String selection;
+    private String difficulty;
     
     ArrayList<String> catImages = new ArrayList();
     
@@ -105,7 +105,7 @@ public class UI extends Application {
                                             timeline2 = new Timeline(new KeyFrame(
                                                 Duration.millis(1500),
                                                 exit -> {    
-                                                    database.saveScore(points, selection);
+                                                    database.saveScore(points, difficulty);
                                                     System.exit(0);
                                                 }
                                             ));
@@ -171,8 +171,8 @@ public class UI extends Application {
         borderPane.setLeft(gridPane);
         
         comboBox.setOnAction((ActionEvent event) -> {
-            selection = comboBox.getSelectionModel().getSelectedItem();
-            switch (selection) {
+            difficulty = comboBox.getSelectionModel().getSelectedItem();
+            switch (difficulty) {
                 case "Easy":
                     gameboard = new Gameboard(2, 3);
                     break;
