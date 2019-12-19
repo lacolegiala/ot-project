@@ -165,7 +165,6 @@ public class UI extends Application {
         
         final ComboBox<String> comboBox = new ComboBox(options);
         
-        borderPane.setRight(label);
         borderPane.setBottom(pointLabel);
         borderPane.setTop(comboBox);
         borderPane.setLeft(gridPane);
@@ -183,6 +182,13 @@ public class UI extends Application {
                     gameboard = new Gameboard(6, 7);
                     break;
             }
+            
+            int highScore = database.fetchHighScore(difficulty);
+            
+            Label highScoreLabel = new Label("High score: " + highScore);
+            
+            borderPane.setRight(highScoreLabel);
+            
             try {
                 fetchCatImages(gameboard.getPairCount());
             } catch (IOException ex) {

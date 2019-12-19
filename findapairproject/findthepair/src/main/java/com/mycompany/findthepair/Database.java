@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class Database {
     
     Connection connection = null;
-
+    
     public Database() {
 
         try {
@@ -51,5 +51,26 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public int fetchHighScore(String difficulty) {
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery ( 
+                    "SELECT SCORE FROM SCORES " +
+                    "WHERE DIFFICULTY='" + difficulty + "' " +
+                    "ORDER BY SCORE DESC LIMIT 1;");
+            boolean foundRow = resultSet.next();
+            
+            int highestScore = foundRow ? resultSet.getInt("score") : 0;
+            
+            resultSet.close();
+            statement.close();
+            return highestScore;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+        
     }
 }
