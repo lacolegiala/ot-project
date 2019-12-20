@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.findthepair;
+package com.mycompany.findthepair.ui;
 
-import com.google.gson.Gson;
+import com.mycompany.findthepair.domain.Card;
+import com.mycompany.findthepair.api.CatImage;
+import com.mycompany.findthepair.api.CatImageService;
+import com.mycompany.findthepair.database.Database;
+import com.mycompany.findthepair.domain.Gameboard;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -26,9 +30,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 /**
  *
@@ -190,7 +191,14 @@ public class UI extends Application {
             borderPane.setRight(highScoreLabel);
             
             try {
-                fetchCatImages(gameboard.getPairCount());
+                
+                for (int i = 0; i < gameboard.getPairCount(); i++) {
+                    CatImageService catImageService = new CatImageService();
+                    CatImage catImage = catImageService.fetchCatImage();
+
+                    catImages.add(catImage.getFile());
+                }
+                
             } catch (IOException ex) {
                 Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -208,22 +216,5 @@ public class UI extends Application {
         database = new Database();
         
     }  
-    
-    private void fetchCatImages(int imageCount) throws IOException {
-        OkHttpClient client = new OkHttpClient();
-        
-        for (int i = 0; i < imageCount; i++) {
-            Request request = new Request.Builder()
-            .url("https://aws.random.cat/meow")
-            .build();
-
-            Response response = client.newCall(request).execute();
-            Gson gson = new Gson();
-            CatImage catImage = gson.fromJson(response.body().string(), CatImage.class);
-            catImages.add(catImage.getFile());
-            
-        }
-        
-    }
     
 }

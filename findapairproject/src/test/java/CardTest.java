@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import com.mycompany.findthepair.Card;
+import com.mycompany.findthepair.domain.Card;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

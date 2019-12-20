@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import com.mycompany.findthepair.Gameboard;
+import com.mycompany.findthepair.domain.Gameboard;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

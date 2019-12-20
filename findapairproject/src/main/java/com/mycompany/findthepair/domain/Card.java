@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.findthepair;
+package com.mycompany.findthepair.domain;
 
 /**
  *
@@ -12,7 +12,7 @@ package com.mycompany.findthepair;
 public class Card {
     
     private int value;
-    boolean isShown;
+    public boolean isShown;
     
     public Card(int value) {
         this.value = value;

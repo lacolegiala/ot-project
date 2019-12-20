@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.mycompany.findthepair;
+package com.mycompany.findthepair.database;
 
 import java.sql.*;
 import java.util.logging.Level;
