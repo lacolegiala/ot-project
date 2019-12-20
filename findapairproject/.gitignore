@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/java,maven,eclipse
-# Edit at https://www.gitignore.io/?templates=java,maven,eclipse
+# Created by https://www.gitignore.io/api/java,maven,eclipse,netbeans
+# Edit at https://www.gitignore.io/?templates=java,maven,eclipse,netbeans
 
 ### Eclipse ###
 .metadata
@@ -109,6 +109,16 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 .flattened-pom.xml
 
-# End of https://www.gitignore.io/api/java,maven,eclipse
+### NetBeans ###
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# End of https://www.gitignore.io/api/java,maven,eclipse,netbeans
 
 findThePair.db
