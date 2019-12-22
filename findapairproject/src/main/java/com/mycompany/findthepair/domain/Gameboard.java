@@ -69,10 +69,11 @@ public class Gameboard {
     
     public boolean boardHasCards() {
         for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) 
+            for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j] != null) {
                     return true;
                 }
+            }
         }
         return false;
     }

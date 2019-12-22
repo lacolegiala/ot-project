@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.mycompany.findthepair.database;
 
 import java.sql.*;
@@ -30,12 +24,12 @@ public class Database {
             String sql = "CREATE TABLE IF NOT EXISTS SCORES " +
                            "(ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                            " SCORE          INT    NOT NULL," + 
-                           " DIFFICULTY     TEXT   NOT NULL);" ;
+                           " DIFFICULTY     TEXT   NOT NULL);";
             statement.executeUpdate(sql);
             statement.close();
         } catch (Exception exception) {
-           System.err.println(exception.getClass().getName() + ": " + exception.getMessage());
-           System.exit(0);
+            System.err.println(exception.getClass().getName() + ": " + exception.getMessage());
+            System.exit(0);
         }
         System.out.println("Table created successfully");
     }
@@ -56,10 +50,10 @@ public class Database {
     public int fetchHighScore(String difficulty) {
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery ( 
-                    "SELECT SCORE FROM SCORES " +
-                    "WHERE DIFFICULTY='" + difficulty + "' " +
-                    "ORDER BY SCORE DESC LIMIT 1;");
+            ResultSet resultSet = statement.executeQuery( 
+                "SELECT SCORE FROM SCORES " +
+                "WHERE DIFFICULTY='" + difficulty + "' " +
+                "ORDER BY SCORE DESC LIMIT 1;");
             boolean foundRow = resultSet.next();
             
             int highestScore = foundRow ? resultSet.getInt("score") : 0;
