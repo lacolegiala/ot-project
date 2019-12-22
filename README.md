@@ -16,6 +16,11 @@ The game is a classic memory game. There will be an even number of cards with pi
 - Pictures will be random by using a random picture API RandomCat ✅
 - Without internet connection, the game just uses numbers instead of cat pictures ✅
 
+## Java version info
+
+The project has been made with Java 8. Newer Java versions don't support JavaFX, so any problems occurring when running the program may be linked to that.
+
+
 ## Documentation
 
 #### [Working hours](findapairproject/documentation/workinghours.md)
@@ -23,13 +28,30 @@ The game is a classic memory game. There will be an even number of cards with pi
 #### [Requirements analysis](findapairproject/documentation/requirements.md)
 
 
-## Running the program
+## Command line commands
 
-```mvn compile exec:java -Dexec.mainClass=com.mycompany.findthepair.Main```
+### Running the program
 
-### INFO
+`mvn compile exec:java -Dexec.mainClass=com.mycompany.findthepair.Main`
 
-The project has been made with Java 8. Newer Java versions don't support JavaFX, so any problems occurring when running the program may be linked to that.
+### Testing
+
+#### Running tests
+
+`mvn test`
+
+#### Generating the test report and viewing it
+
+`mvn jacoco:report`
+
+`open target/site/jacoco/index.html`
+
+### Generating jar
+
+`mvn package`
+
+will generate jar file findthepair-1.0-SNAPSHOT.jar
+
 
 
 
