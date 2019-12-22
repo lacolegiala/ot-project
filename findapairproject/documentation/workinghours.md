@@ -19,3 +19,4 @@
 | 18.12 | 2 | Create a database to save scores
 | 19.12 | 4 | Add a feature to show the high score 
 | 20.12 | 2 | Separate code files into packages
+| 22.12 | 2.5 | Improve documentation
