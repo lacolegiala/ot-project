@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.findthepair.ui;
 
 import com.mycompany.findthepair.domain.Card;
@@ -152,8 +147,6 @@ public class UI extends Application {
         Scene scene = new Scene(borderPane);
         
         GridPane gridPane = new GridPane();
-        
-        Label label = new Label("Select your card");
         
         Label pointLabel = new Label();
         

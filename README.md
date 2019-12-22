@@ -27,6 +27,10 @@ The project has been made with Java 8. Newer Java versions don't support JavaFX,
 
 #### [Requirements analysis](findapairproject/documentation/requirements.md)
 
+#### [Architecture](findapairproject/documentation/architecture.md)
+
+#### [Instructions](findapairproject/documentation/instructions.md)
+
 
 ## Command line commands
 
@@ -51,6 +55,10 @@ The project has been made with Java 8. Newer Java versions don't support JavaFX,
 `mvn package`
 
 will generate jar file findthepair-1.0-SNAPSHOT.jar
+
+### Generating checkstyle report
+
+`mvn jxr:jxr checkstyle:checkstyle`
 
 
 
